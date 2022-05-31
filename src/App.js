@@ -3,7 +3,7 @@ import Form from './Form';
 import './App.css';
 
 const initialFormValues = {
-username: '',
+name: '',
 email: '',
 role: ''
 };
@@ -24,7 +24,7 @@ const list = [
 function App() {
 
   const [formValues, setFormValues] = useState(initialFormValues);
-  const [memberList, setMemberList] = useState(list);
+  const [memberList, setMemberList] = useState([]);
   
   return (
     <div className="App">
