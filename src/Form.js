@@ -3,34 +3,54 @@ import React from 'react';
 
 
 function Form(props) {
-const { values, update, submit } = props;
+    const onChange = event => {
+        const { name, value } = event.target;
+        props.change(name, value);
+    }
+
+    const handleSubmit = evt => {
+        evt.preventDefault();
+        props.submit();
+        };
 
 return (
-<form className= 'form-container'>
+<form onSubmit={handleSubmit} >
     <label>Name
         <input
         type= 'text'
         name= 'name'
-        
+        onChange= {onChange}
         placeholder= "Type your name..."
+        value={props.value.name}
+ 
         />
     </label>
-    <label>Email</label>
+    <label>Email
+    <input
+        type= 'text'
+        name= 'email'
+        onChange= {onChange}
+        placeholder= "Type your email..."
+        value={props.value.email}
+        
+        />
+    </label>
     <label>Role
-        <select>
-            <option value="">--Select a Role</option>
-            <option value="backend-engineer">Backend Engineer</option>
-            <option value="full-stack">Full Stack Developer</option>
-            <option value="designer">Designer</option>
-        </select>
+        <input
+        placeholder="Enter your role"
+        value= {props.value.role}
+        name="role"
+        onChange= {onChange}
+        />
     </label>
 
 
 
 
     <div className='submit'>
-        <button>Submit</button>
-    </div>
+        <input type="submit" value="add member" />
+       
+  </div>
 </form>
 
 
